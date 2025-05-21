@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="notificacao" id="notificacao">
+            <span id="notificacaoTexto"></span>
+            <i class="fechar-notificacao fas fa-times" onclick="fecharNotificacao()"></i>
+        </div>
+        
+        <div class="cabecalho">
+            <h1>Cronograma</h1>
+            <div class="controles">
+                <i class="icone fas fa-palette" onclick="alternarTemas()" title="Mudar tema"></i>
+                <i class="icone fas fa-share-alt" onclick="compartilhar()" title="Compartilhar"></i>
+            </div>
+        </div>
+
+        <form class="formulario" onsubmit="manipularTarefa(event)" id="formTarefa">
+            <div class="grupo-input">
+                <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+                <input type="date" id="data" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="hora"><i class="fas fa-clock"></i> Hora</label>
+                <input type="time" id="hora" required>
+            </div>
+
+            <div class="grupo-input">
+                <label for="descricao"><i class="fas fa-pencil-alt"></i> Descrição</label>
+                <input type="text" id="descricao" placeholder="Adicione uma descrição" required>
+            </div>
+
+            <div class="grupo-input">
+                <label for="prioridade"><i class="fas fa-exclamation-circle"></i> Prioridade</label>
+                <select id="prioridade">
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" id="botaoAcao" class="botao-primario">
+                    <i class="fas fa-plus"></i> Adicionar
+                </button>
+                <button type="button" onclick="cancelarEdicao()" id="botaoCancelar" class="botao-secundario" style="display: none;">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+
+        <div class="filtros" id="filtros">
+            <button class="filtro-ativo" onclick="filtrarTarefas('todas')">Todas</button>
+            <button onclick="filtrarTarefas('pendentes')">Pendentes</button>
+            <button onclick="filtrarTarefas('concluidas')">Concluídas</button>
+        </div>
+
+        <div class="lista-tarefas" id="listaTarefas"></div>
+        
+        <div class="contador" id="contador"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
